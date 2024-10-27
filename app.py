@@ -1,3 +1,4 @@
+
 # Additional Python Notes
 # ------------------------
 
@@ -41,6 +42,7 @@ from shiny.express import input, ui, render
 from shinywidgets import render_widget, render_plotly
 import seaborn as sns
 import matplotlib.pyplot as plt
+from shiny import reactive
 
 penguins = load_penguins()
 
@@ -161,3 +163,7 @@ with ui.layout_columns():
         def summary_table():
             summary = penguins.describe()
             return summary.reset_index()  # Reset index for display
+
+@reactive.calc
+def filtered_data():
+    return penguins
