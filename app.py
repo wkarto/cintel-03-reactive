@@ -132,7 +132,7 @@ with ui.layout_columns():
         @render_plotly
         def plotly_scatterplot():
             return px.scatter(
-                data_frame=penguins,
+                data_frame=filtered_data(),
                 x="body_mass_g",
                 y="bill_depth_mm",
                 color="species",
@@ -149,7 +149,7 @@ with ui.layout_columns():
         @render.plot
         def seaborn_histogram():
             hist = sns.histplot(
-                data=penguins, x="body_mass_g", bins=input.seaborn_bin_count()
+                data=filtered_data(), x="body_mass_g", bins=input.seaborn_bin_count()
             )
             hist.set_xlabel("Mass (g)")
             hist.set_ylabel("Count")
